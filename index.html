@@ -1,116 +1,175 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grain d'Espoir Essonne</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grain d'Espoir Essonne</title>
+  <style>
+    :root {
+      --vert: #1e6b52;
+      --vert-clair: #2d8c67;
+      --or: #f2c94c;
+      --blanc: #ffffff;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #1f6b52, #2f8a67);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+    * { box-sizing: border-box; }
 
-        .container {
-            text-align: center;
-            max-width: 900px;
-            padding: 40px;
-        }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, var(--vert), var(--vert-clair));
+      color: var(--blanc);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
 
-        .logo {
-            width: 220px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-        }
+    .container {
+      text-align: center;
+      max-width: 900px;
+      padding: 40px 24px;
+    }
 
-        h1 {
-            font-size: 4rem;
-            margin: 0;
-            color: #ffffff;
-            text-transform: uppercase;
+    .logo {
+      width: 220px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.35));
+      transform: perspective(700px) rotateY(-10deg);
+    }
 
-            /* Effet 3D */
-            text-shadow:
-                1px 1px 0 #d4af37,
-                2px 2px 0 #d4af37,
-                3px 3px 0 #d4af37,
-                4px 4px 10px rgba(0,0,0,0.4);
-        }
+    h1 {
+      font-size: 4rem;
+      margin: 0;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow:
+        1px 1px 0 #d4af37,
+        2px 2px 0 #d4af37,
+        3px 3px 0 #b9902f,
+        4px 4px 0 #967426,
+        7px 7px 18px rgba(0, 0, 0, 0.45);
+      transform: perspective(800px) rotateX(4deg);
+    }
 
-        .slogan {
-            color: #f2c94c;
-            font-size: 1.4rem;
-            font-style: italic;
-            margin-top: 10px;
-            margin-bottom: 40px;
-        }
+    .slogan {
+      color: var(--or);
+      font-size: 1.4rem;
+      font-style: italic;
+      margin: 12px 0 36px;
+    }
 
-        .presentation {
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(8px);
-            border-radius: 15px;
-            padding: 30px;
-            line-height: 1.8;
-            font-size: 1.15rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+    .presentation {
+      background: rgba(255, 255, 255, 0.13);
+      backdrop-filter: blur(8px);
+      border-radius: 18px;
+      padding: 30px;
+      line-height: 1.8;
+      font-size: 1.15rem;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+    }
 
-        .presentation strong {
-            color: #f2c94c;
-        }
+    .presentation strong { color: var(--or); }
 
-        @media(max-width:768px){
-            h1{
-                font-size:2.5rem;
-            }
+    /* Bouton latéral Nos activités */
+    .side-button {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 110px;
+      text-decoration: none;
+      color: var(--blanc);
+      text-align: center;
+      z-index: 1000;
+    }
 
-            .logo{
-                width:160px;
-            }
-        }
-    </style>
+    .side-button-card {
+      background: rgba(255, 255, 255, 0.16);
+      border: 2px solid rgba(242, 201, 76, 0.8);
+      border-radius: 22px;
+      padding: 12px 10px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .side-button-card:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+    }
+
+    .side-button img {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 8px;
+      filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+    }
+
+    .side-button span {
+      display: block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--or);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.35rem; }
+      .logo { width: 155px; }
+      .presentation { font-size: 1rem; }
+
+      .side-button {
+        right: 12px;
+        bottom: 18px;
+        top: auto;
+        transform: none;
+        width: 96px;
+      }
+
+      .side-button img {
+        width: 62px;
+        height: 62px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-
-        <!-- Remplacer logo.png par votre logo -->
-        <img src="logo.png" alt="Logo Grain d'Espoir Essonne" class="logo">
-
-        <h1>Grain d'Espoir Essonne</h1>
-
-        <div class="slogan">
-            Vivre dans l'espérance
-        </div>
-
-        <div class="presentation">
-            <p>
-                <strong>Grain d'Espoir Essonne</strong> est une association humanitaire à but non lucratif
-                qui œuvre pour promouvoir la solidarité, le respect, l'entraide et le dialogue entre les générations.
-            </p>
-
-            <p>
-                Nous accompagnons les personnes âgées, les personnes en situation de fragilité
-                ainsi que toutes celles et ceux qui ont besoin d'écoute, de soutien ou d'encouragement.
-                À travers nos actions bénévoles, nos animations, nos formations et nos activités
-                sociales et culturelles, nous semons chaque jour des graines d'espérance pour
-                construire une société plus fraternelle.
-            </p>
-
-            <p>
-                Notre vision est simple :
-                <strong>« Semer le bon grain d'espérance pour récolter les fruits de l'amour,
-                de la joie, du courage et du respect dans la fraternité humaine. »</strong>
-            </p>
-        </div>
-
+  <a href="#" class="side-button" aria-label="Voir nos activités">
+    <div class="side-button-card">
+      <img src="icon-nos-activites.png" alt="Bénévole auprès d'une personne en fauteuil roulant" />
+      <span>Nos activités</span>
     </div>
+  </a>
+
+  <main class="container">
+    <img src="logo.png" alt="Logo Grain d'Espoir Essonne" class="logo" />
+
+    <h1>Grain d'Espoir Essonne</h1>
+
+    <div class="slogan">Vivre dans l'espérance</div>
+
+    <section class="presentation">
+      <p>
+        <strong>Grain d'Espoir Essonne</strong> est une association humanitaire à but non lucratif
+        qui accueille toute personne animée du désir de partager l'espoir, la joie et la fraternité.
+      </p>
+      <p>
+        Sans distinction d'origine, d'âge, de sexe ou de croyance, l'association agit en faveur
+        des personnes âgées, des personnes en situation de handicap et des personnes démunies
+        situées dans l'Essonne et les villes voisines.
+      </p>
+      <p>
+        Notre vision : <strong>semer le bon grain d'espoir pour récolter les fruits de l'amour,
+        de la joie, du courage et du respect dans la fraternité humaine.</strong>
+      </p>
+    </section>
+  </main>
 
 </body>
 </html>
