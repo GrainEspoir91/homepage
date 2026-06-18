@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grain d'Espoir Essonne</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #1f6b52, #2f8a67);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 900px;
+            padding: 40px;
+        }
+
+        .logo {
+            width: 220px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: #ffffff;
+            text-transform: uppercase;
+
+            /* Effet 3D */
+            text-shadow:
+                1px 1px 0 #d4af37,
+                2px 2px 0 #d4af37,
+                3px 3px 0 #d4af37,
+                4px 4px 10px rgba(0,0,0,0.4);
+        }
+
+        .slogan {
+            color: #f2c94c;
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+
+        .presentation {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            padding: 30px;
+            line-height: 1.8;
+            font-size: 1.15rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .presentation strong {
+            color: #f2c94c;
+        }
+
+        @media(max-width:768px){
+            h1{
+                font-size:2.5rem;
+            }
+
+            .logo{
+                width:160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Remplacer logo.png par votre logo -->
+        <img src="logo.png" alt="Logo Grain d'Espoir Essonne" class="logo">
+
+        <h1>Grain d'Espoir Essonne</h1>
+
+        <div class="slogan">
+            Vivre dans l'espérance
+        </div>
+
+        <div class="presentation">
+            <p>
+                <strong>Grain d'Espoir Essonne</strong> est une association humanitaire à but non lucratif
+                qui œuvre pour promouvoir la solidarité, le respect, l'entraide et le dialogue entre les générations.
+            </p>
+
+            <p>
+                Nous accompagnons les personnes âgées, les personnes en situation de fragilité
+                ainsi que toutes celles et ceux qui ont besoin d'écoute, de soutien ou d'encouragement.
+                À travers nos actions bénévoles, nos animations, nos formations et nos activités
+                sociales et culturelles, nous semons chaque jour des graines d'espérance pour
+                construire une société plus fraternelle.
+            </p>
+
+            <p>
+                Notre vision est simple :
+                <strong>« Semer le bon grain d'espérance pour récolter les fruits de l'amour,
+                de la joie, du courage et du respect dans la fraternité humaine. »</strong>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
