@@ -4,311 +4,532 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grain d'Espoir Essonne</title>
+
   <style>
     :root {
-      --vert: #1e6b52;
-      --vert-clair: #2d8c67;
-      --or: #f2c94c;
-      --blanc: #ffffff;
+      --green-dark: #123f2b;
+      --green: #1f6b52;
+      --green-soft: #2f8a67;
+      --gold: #f2c94c;
+      --cream: #fffaf0;
+      --text: #173b30;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, var(--vert), var(--vert-clair));
-      color: var(--blanc);
+      color: var(--text);
+      background: var(--cream);
+    }
+
+    .page {
       min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(255,250,240,0.94) 0%, rgba(255,250,240,0.88) 43%, rgba(255,250,240,0.35) 100%),
+        radial-gradient(circle at 85% 20%, rgba(242,201,76,0.28), transparent 28%),
+        linear-gradient(135deg, #f6fff7 0%, #fff7df 50%, #e8fff4 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: 120px;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(31,107,82,0.20), transparent 68%);
+      z-index: 0;
+    }
+
+    header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 5vw;
+      background: rgba(255,255,255,0.86);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: var(--green-dark);
+    }
+
+    .brand img {
+      width: 86px;
+      height: 86px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.16));
+      transform: perspective(700px) rotateY(-8deg) rotateX(5deg);
+    }
+
+    .brand-title {
+      font-family: Georgia, serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 0.95;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 800;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--green-dark);
+      padding-bottom: 6px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover,
+    nav a.active {
+      border-bottom-color: var(--green);
+    }
+
+    .don-top {
+      background: var(--green);
+      color: white;
+      padding: 13px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(31,107,82,0.25);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 42px;
+      align-items: center;
+      padding: 56px 5vw 0;
+      min-height: 590px;
+    }
+
+    .hero-text {
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      margin: 0 0 22px;
+      color: var(--green-dark);
+      font-size: clamp(2.5rem, 5vw, 4.7rem);
+      line-height: 1.14;
+      letter-spacing: -1px;
+      text-shadow:
+        1px 1px 0 rgba(242,201,76,0.75),
+        2px 2px 0 rgba(242,201,76,0.45),
+        6px 10px 25px rgba(0,0,0,0.10);
+    }
+
+    .hero-text p {
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.65;
+      margin: 0 0 26px;
+      max-width: 660px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 56px;
+      padding: 0 26px;
+      border-radius: 10px;
+      font-weight: 900;
+      text-decoration: none;
+      font-size: 1.05rem;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+      box-shadow: 0 12px 24px rgba(31,107,82,0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.65);
+      color: var(--green-dark);
+      border: 2px solid rgba(31,107,82,0.45);
+    }
+
+    .support-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 28px;
+      padding: 30px 26px;
+      box-shadow: 0 24px 55px rgba(0,0,0,0.16);
+      text-align: center;
+      border: 1px solid rgba(31,107,82,0.12);
+      transform: perspective(1000px) rotateY(-3deg);
+    }
+
+    .support-title {
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow-x: hidden;
-    }
-
-    .container {
-      text-align: center;
-      max-width: 900px;
-      padding: 40px 24px;
-    }
-
-    .logo {
-      width: 220px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.35));
-      transform: perspective(700px) rotateY(-10deg);
-    }
-
-    h1 {
-      font-size: 4rem;
-      margin: 0;
+      gap: 14px;
+      color: var(--green-dark);
+      font-weight: 900;
       text-transform: uppercase;
-      color: #ffffff;
-      text-shadow:
-        1px 1px 0 #d4af37,
-        2px 2px 0 #d4af37,
-        3px 3px 0 #b9902f,
-        4px 4px 0 #967426,
-        7px 7px 18px rgba(0, 0, 0, 0.45);
-      transform: perspective(800px) rotateX(4deg);
+      font-size: 1.45rem;
+      margin-bottom: 12px;
     }
 
-    .slogan {
-      color: var(--or);
-      font-size: 1.4rem;
+    .support-title img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    .support-card .quote {
+      font-family: Georgia, serif;
       font-style: italic;
-      margin: 12px 0 36px;
+      font-size: 1.35rem;
+      line-height: 1.35;
+      margin: 10px 0 18px;
     }
 
-    .presentation {
-      background: rgba(255, 255, 255, 0.13);
-      backdrop-filter: blur(8px);
-      border-radius: 18px;
-      padding: 30px;
-      line-height: 1.8;
-      font-size: 1.15rem;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+    .qr-box {
+      background: white;
+      border-radius: 16px;
+      padding: 12px;
+      display: inline-block;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
     }
 
-    .presentation strong { color: var(--or); }
+    .qr-box img {
+      width: min(100%, 270px);
+      display: block;
+      border-radius: 8px;
+    }
 
-    /* Bouton latéral Nos activités */
-    .side-button {
+    .scan-text {
+      font-size: 1.1rem;
+      line-height: 1.4;
+      margin: 16px 0 22px;
+    }
+
+    .scan-text strong {
+      display: block;
+      color: var(--green);
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+
+    .mission {
+      margin-top: 46px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(242,201,76,0.18), transparent 25%),
+        linear-gradient(135deg, var(--green-dark), var(--green));
+      color: white;
+      padding: 42px 5vw 58px;
+      text-align: center;
+    }
+
+    .mission h2 {
+      margin: 0 0 10px;
+      color: var(--cream);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .mission-intro {
+      max-width: 820px;
+      margin: 0 auto 34px;
+      line-height: 1.65;
+      font-size: 1.1rem;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .value {
+      padding: 22px 18px;
+    }
+
+    .value-icon {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      background: rgba(255,250,240,0.86);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 900;
+    }
+
+    .value h3 {
+      margin: 0 0 8px;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+
+    .value p {
+      margin: 0;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .side-activity-button {
       position: fixed;
-      right: 24px;
+      right: 18px;
       top: 50%;
       transform: translateY(-50%);
-      width: 110px;
-      text-decoration: none;
-      color: var(--blanc);
-      text-align: center;
-      z-index: 1000;
-    }
-
-    .side-button-card {
-      background: rgba(255, 255, 255, 0.16);
-      border: 2px solid rgba(242, 201, 76, 0.8);
+      z-index: 999;
+      width: 92px;
+      min-height: 118px;
+      padding: 10px 8px;
       border-radius: 22px;
-      padding: 12px 10px;
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(8px);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: rgba(255,255,255,0.94);
+      color: var(--green);
+      text-decoration: none;
+      text-align: center;
+      font-weight: 900;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.24);
+      border: 2px solid var(--gold);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .side-button-card:hover {
-      transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.45);
-      cursor: pointer;
+    .side-activity-button:hover {
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 16px 38px rgba(0,0,0,0.30);
     }
 
-    .side-button img {
-      width: 74px;
-      height: 74px;
+    .side-activity-button img {
+      width: 66px;
+      height: 66px;
       border-radius: 50%;
       object-fit: cover;
       display: block;
       margin: 0 auto 8px;
-      filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+      border: 3px solid var(--green);
     }
 
-    .side-button span {
+    .side-activity-button span {
       display: block;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--or);
+      font-size: 0.82rem;
+      line-height: 1.1;
     }
 
-    @media (max-width: 768px) {
-      h1 { font-size: 2.35rem; }
-      .logo { width: 155px; }
-      .presentation { font-size: 1rem; }
-
-      .side-button {
-        right: 12px;
-        bottom: 18px;
-        top: auto;
-        transform: none;
-        width: 96px;
-      }
-
-      .side-button img {
-        width: 62px;
-        height: 62px;
-      }
-    }
-  </style>
-
-  <style>
-    .join-donate-section {
-      padding: 60px 18px;
-      background:
-        radial-gradient(circle at top left, rgba(242,201,76,0.25), transparent 34%),
-        linear-gradient(135deg, #fffaf0, #eaf8ef);
-      color: #173b30;
-    }
-
-    .join-donate-content {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 360px;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .section-kicker {
-      display: inline-block;
-      background: #f2c94c;
-      color: #173b30;
-      font-weight: 800;
-      padding: 8px 14px;
-      border-radius: 999px;
-      margin-bottom: 14px;
-    }
-
-    .join-donate-text h2 {
-      margin: 0 0 18px;
-      color: #1f6b52;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      text-transform: uppercase;
-      text-shadow:
-        1px 1px 0 #d4af37,
-        2px 2px 0 rgba(212,175,55,0.85),
-        5px 8px 18px rgba(0,0,0,0.15);
-    }
-
-    .join-donate-text p {
-      font-size: 1.12rem;
-      line-height: 1.75;
-      margin: 0 0 18px;
-    }
-
-    .join-donate-text .highlight {
-      font-weight: 800;
-      color: #1f6b52;
-      background: rgba(255,255,255,0.75);
-      border-left: 6px solid #f2c94c;
-      padding: 16px 18px;
-      border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(31,107,82,0.10);
-    }
-
-    .join-donate-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .join-donate-actions a {
-      text-decoration: none;
-      border-radius: 999px;
-      padding: 13px 20px;
-      font-weight: 800;
-      display: inline-block;
-    }
-
-    .main-action {
-      background: #1f6b52;
+    footer {
+      background: #0d2c1f;
       color: white;
-      box-shadow: 0 10px 22px rgba(31,107,82,0.28);
+      text-align: center;
+      padding: 22px;
+      font-size: 0.95rem;
     }
 
-    .secondary-action {
-      background: white;
-      color: #1f6b52;
-      border: 2px solid #f2c94c;
-    }
-
-    .flyer-card {
-      background: white;
-      padding: 14px;
-      border-radius: 26px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.18);
-      transform: perspective(900px) rotateY(-4deg);
-    }
-
-    .flyer-card img {
-      width: 100%;
-      max-height: 620px;
-      object-fit: contain;
-      display: block;
-      border-radius: 18px;
-    }
-
-    @media (max-width: 850px) {
-      .join-donate-content {
-        grid-template-columns: 1fr;
+    @media (max-width: 980px) {
+      header {
+        flex-wrap: wrap;
       }
 
-      .flyer-card {
+      nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 38px;
+      }
+
+      .support-card {
         max-width: 420px;
         margin: 0 auto;
         transform: none;
       }
+
+      .values {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .brand img {
+        width: 68px;
+        height: 68px;
+      }
+
+      .brand-title {
+        font-size: 1.55rem;
+      }
+
+      .don-top {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .support-card {
+        padding: 22px 16px;
+      }
+
+      .values {
+        grid-template-columns: 1fr;
+      }
+
+      .side-activity-button {
+        right: 10px;
+        width: 76px;
+        min-height: 98px;
+        border-radius: 18px;
+      }
+
+      .side-activity-button img {
+        width: 52px;
+        height: 52px;
+      }
+
+      .side-activity-button span {
+        font-size: 0.72rem;
+      }
     }
   </style>
-
 </head>
+
 <body>
+  <div class="page">
+    <header>
+      <a class="brand" href="#">
+        <img src="logo.png" alt="Logo Grain d'Espoir Essonne" />
+        <div class="brand-title">Grain d'Espoir<br>Essonne</div>
+      </a>
 
-  
-  <section class="join-donate-section" id="inscription-don">
-    <div class="join-donate-content">
-      <div class="join-donate-text">
-        <span class="section-kicker">Agir avec nous</span>
-        <h2>Inscription & dons</h2>
-        <p>
-          Partout autour de nous, des personnes âgées, isolées ou fragilisées ont besoin
-          d’un sourire, d’une écoute et d’un accompagnement. Rejoignez nos bénévoles ou
-          soutenez les actions de Grain d’Espoir Essonne.
-        </p>
-        <p class="highlight">
-          Scannez le QR code du flyer pour vous inscrire, participer à nos activités
-          ou faire un don.
-        </p>
-        <div class="join-donate-actions">
-          <a href="PHOTO-2025-12-25-18-01-38.jpg" target="_blank" class="main-action">Ouvrir le flyer</a>
-          <a href="#inscription-don" class="secondary-action">Scanner le QR code</a>
+      <nav aria-label="Navigation principale">
+        <a class="active" href="#">Accueil</a>
+        <a href="#mission">À propos</a>
+        <a href="https://GrainEspoir91.github.io/activities/">Nos activités</a>
+        <a href="#qrcode">Nous soutenir</a>
+        <a href="mailto:espoir.grain@gmail.com">Contact</a>
+      </nav>
+
+      <a class="don-top" href="#qrcode">♥ Faire un don</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Partout, autour de vous, des personnes âgées, isolées, sans famille ont besoin d’un peu de sourire, d’accompagnement et d’écoute.</h1>
+          <p>
+            Ensemble, partageons l’espoir et l’amour. Rejoignez-nous pour accompagner,
+            soutenir et apporter des moments de joie, de paix et d’espérance.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="https://GrainEspoir91.github.io/activities/">☘ Nos activités</a>
+            <a class="btn btn-secondary" href="#qrcode">🤲 Devenir bénévole</a>
+          </div>
         </div>
-      </div>
 
-      <div class="flyer-card">
-        <img src="PHOTO-2025-12-25-18-01-38.jpg" alt="Flyer Grain d'Espoir Essonne avec QR code pour inscription et dons">
-      </div>
-    </div>
-  </section>
+        <aside class="support-card" id="qrcode">
+          <div class="support-title">
+            <img src="logo.png" alt="" />
+            <span>Le Cri de l’Espoir</span>
+          </div>
 
-<a href="https://GrainEspoir91.github.io/activities/" class="side-button" aria-label="Voir nos activités">
-    <div class="side-button-card">
-      <img src="icon-nos-activites.png" alt="Bénévole auprès d'une personne en fauteuil roulant" />
+          <div class="quote">Ensemble partageons<br>l’espoir et l’amour.</div>
+
+          <div class="qr-box">
+            <img src="qrcode-adhesion-cotisation-2025-2026.png" alt="QR code pour s'inscrire ou faire un don" />
+          </div>
+
+          <div class="scan-text">
+            <strong>Scannez le QR Code</strong>
+            pour vous inscrire ou faire un don
+          </div>
+
+          <a class="btn btn-primary" href="#qrcode">♥ Je fais un don</a>
+        </aside>
+      </section>
+
+      <section class="mission" id="mission">
+        <h2>Notre mission</h2>
+        <p class="mission-intro">
+          Apporter joie, réconfort et soutien aux personnes âgées isolées et sans famille,
+          en créant des rencontres humaines simples, chaleureuses et porteuses d’espérance.
+        </p>
+
+        <div class="values">
+          <div class="value">
+            <div class="value-icon">♡</div>
+            <h3>Écouter</h3>
+            <p>Être à l’écoute avec bienveillance et respect.</p>
+          </div>
+
+          <div class="value">
+            <div class="value-icon">♧</div>
+            <h3>Accompagner</h3>
+            <p>Accompagner au quotidien avec attention et présence.</p>
+          </div>
+
+          <div class="value">
+            <div class="value-icon">🤲</div>
+            <h3>Soutenir</h3>
+            <p>Soutenir avec amour, solidarité et fraternité.</p>
+          </div>
+
+          <div class="value">
+            <div class="value-icon">☀</div>
+            <h3>Partager</h3>
+            <p>Partager des moments de joie, de paix et d’espérance.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <a href="https://GrainEspoir91.github.io/activities/" class="side-activity-button" aria-label="Voir nos activités">
+      <img src="icon-nos-activites.png" alt="">
       <span>Nos activités</span>
-    </div>
-  </a>
+    </a>
 
-  <main class="container">
-    <img src="logo.png" alt="Logo Grain d'Espoir Essonne" class="logo" />
-
-    <h1>Grain d'Espoir Essonne</h1>
-
-    <div class="slogan">Vivre dans l'espérance</div>
-
-    <section class="presentation">
-      <p>
-        <strong>Grain d'Espoir Essonne</strong> est une association humanitaire à but non lucratif
-        qui accueille toute personne animée du désir de partager l'espoir, la joie et la fraternité.
-      </p>
-      <p>
-        Sans distinction d'origine, d'âge, de sexe ou de croyance, l'association agit en faveur
-        des personnes âgées, des personnes en situation de handicap et des personnes démunies
-        situées dans l'Essonne et les villes voisines.
-      </p>
-      <p>
-        Notre vision : <strong>semer le bon grain d'espoir pour récolter les fruits de l'amour,
-        de la joie, du courage et du respect dans la fraternité humaine.</strong>
-      </p>
-    </section>
-  </main>
-
+    <footer>
+      © Grain d'Espoir Essonne — Vivre dans l'espérance
+    </footer>
+  </div>
 </body>
 </html>
