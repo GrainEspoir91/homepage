@@ -137,10 +137,149 @@
       }
     }
   </style>
+
+  <style>
+    .join-donate-section {
+      padding: 60px 18px;
+      background:
+        radial-gradient(circle at top left, rgba(242,201,76,0.25), transparent 34%),
+        linear-gradient(135deg, #fffaf0, #eaf8ef);
+      color: #173b30;
+    }
+
+    .join-donate-content {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      background: #f2c94c;
+      color: #173b30;
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .join-donate-text h2 {
+      margin: 0 0 18px;
+      color: #1f6b52;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-transform: uppercase;
+      text-shadow:
+        1px 1px 0 #d4af37,
+        2px 2px 0 rgba(212,175,55,0.85),
+        5px 8px 18px rgba(0,0,0,0.15);
+    }
+
+    .join-donate-text p {
+      font-size: 1.12rem;
+      line-height: 1.75;
+      margin: 0 0 18px;
+    }
+
+    .join-donate-text .highlight {
+      font-weight: 800;
+      color: #1f6b52;
+      background: rgba(255,255,255,0.75);
+      border-left: 6px solid #f2c94c;
+      padding: 16px 18px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(31,107,82,0.10);
+    }
+
+    .join-donate-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .join-donate-actions a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 13px 20px;
+      font-weight: 800;
+      display: inline-block;
+    }
+
+    .main-action {
+      background: #1f6b52;
+      color: white;
+      box-shadow: 0 10px 22px rgba(31,107,82,0.28);
+    }
+
+    .secondary-action {
+      background: white;
+      color: #1f6b52;
+      border: 2px solid #f2c94c;
+    }
+
+    .flyer-card {
+      background: white;
+      padding: 14px;
+      border-radius: 26px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+      transform: perspective(900px) rotateY(-4deg);
+    }
+
+    .flyer-card img {
+      width: 100%;
+      max-height: 620px;
+      object-fit: contain;
+      display: block;
+      border-radius: 18px;
+    }
+
+    @media (max-width: 850px) {
+      .join-donate-content {
+        grid-template-columns: 1fr;
+      }
+
+      .flyer-card {
+        max-width: 420px;
+        margin: 0 auto;
+        transform: none;
+      }
+    }
+  </style>
+
 </head>
 <body>
 
-  <a href="https://GrainEspoir91.github.io/activities/" class="side-button" aria-label="Voir nos activités">
+  
+  <section class="join-donate-section" id="inscription-don">
+    <div class="join-donate-content">
+      <div class="join-donate-text">
+        <span class="section-kicker">Agir avec nous</span>
+        <h2>Inscription & dons</h2>
+        <p>
+          Partout autour de nous, des personnes âgées, isolées ou fragilisées ont besoin
+          d’un sourire, d’une écoute et d’un accompagnement. Rejoignez nos bénévoles ou
+          soutenez les actions de Grain d’Espoir Essonne.
+        </p>
+        <p class="highlight">
+          Scannez le QR code du flyer pour vous inscrire, participer à nos activités
+          ou faire un don.
+        </p>
+        <div class="join-donate-actions">
+          <a href="PHOTO-2025-12-25-18-01-38.jpg" target="_blank" class="main-action">Ouvrir le flyer</a>
+          <a href="#inscription-don" class="secondary-action">Scanner le QR code</a>
+        </div>
+      </div>
+
+      <div class="flyer-card">
+        <img src="PHOTO-2025-12-25-18-01-38.jpg" alt="Flyer Grain d'Espoir Essonne avec QR code pour inscription et dons">
+      </div>
+    </div>
+  </section>
+
+<a href="https://GrainEspoir91.github.io/activities/" class="side-button" aria-label="Voir nos activités">
     <div class="side-button-card">
       <img src="icon-nos-activites.png" alt="Bénévole auprès d'une personne en fauteuil roulant" />
       <span>Nos activités</span>
