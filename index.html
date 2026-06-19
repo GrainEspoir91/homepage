@@ -348,6 +348,53 @@
       line-height: 1.1;
     }
 
+
+    .side-calendar-button {
+      position: fixed;
+      right: 18px;
+      top: calc(50% + 145px);
+      transform: translateY(-50%);
+      z-index: 999;
+      width: 92px;
+      min-height: 118px;
+      padding: 10px 8px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.94);
+      color: var(--green);
+      text-decoration: none;
+      text-align: center;
+      font-weight: 900;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.24);
+      border: 2px solid var(--gold);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .side-calendar-button:hover {
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 16px 38px rgba(0,0,0,0.30);
+    }
+
+    .side-calendar-button .calendar-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      border: 3px solid var(--gold);
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .side-calendar-button span {
+      display: block;
+      font-size: 0.82rem;
+      line-height: 1.1;
+    }
+
     footer {
       background: #0d2c1f;
       color: white;
@@ -428,6 +475,25 @@
       .side-activity-button span {
         font-size: 0.72rem;
       }
+
+      .side-calendar-button {
+        right: 10px;
+        top: calc(50% + 125px);
+        width: 76px;
+        min-height: 98px;
+        border-radius: 18px;
+      }
+
+      .side-calendar-button .calendar-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.55rem;
+      }
+
+      .side-calendar-button span {
+        font-size: 0.72rem;
+      }
+
     }
   </style>
 </head>
@@ -444,6 +510,7 @@
         <a class="active" href="#">Accueil</a>
         <a href="#mission">À propos</a>
         <a href="https://activites.graindespoir.fr">Nos activités</a>
+        <a href="https://calendrier.graindespoir.fr">Calendrier</a>
         <a href="#qrcode">Nous soutenir</a>
         <a href="mailto:espoir.grain@gmail.com">Contact</a>
       </nav>
@@ -462,6 +529,7 @@
 
           <div class="buttons">
             <a class="btn btn-primary" href="https://activites.graindespoir.fr">☘ Nos activités</a>
+            <a class="btn btn-secondary" href="https://calendrier.graindespoir.fr">📅 Notre calendrier</a>
             <a class="btn btn-secondary" href="#qrcode">🤲 Devenir bénévole</a>
           </div>
         </div>
@@ -525,6 +593,11 @@
     <a href="https://activites.graindespoir.fr" class="side-activity-button" aria-label="Voir nos activités">
       <img src="icon-nos-activites.png" alt="">
       <span>Nos activités</span>
+    </a>
+
+    <a href="https://calendrier.graindespoir.fr" class="side-calendar-button" aria-label="Voir le calendrier">
+      <div class="calendar-icon">📅</div>
+      <span>Notre<br>calendrier</span>
     </a>
 
     <footer>
