@@ -56,7 +56,7 @@
 
     .header-top {
       display: grid;
-      grid-template-columns: minmax(270px, auto) 1fr minmax(170px, auto);
+      grid-template-columns: minmax(270px, auto) minmax(0, 1fr);
       align-items: center;
       gap: 32px;
 
@@ -73,7 +73,7 @@
 
     @media (max-width: 900px) {
       .header-top {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr;
       }
 
       .daily-quote {

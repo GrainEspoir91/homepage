@@ -357,3 +357,64 @@ Principes retenus :
 
 **Grain d'Espoir Essonne**
 *Vivre dans l'espérance*
+
+# Grain d'Espoir Essonne — Homepage
+
+## État fonctionnel — septembre 2026
+
+Le dépôt `homepage` contient le site principal de **Grain d'Espoir Essonne**.
+
+Production :
+
+```text
+https://graindespoir.fr
+```
+
+### Fonctionnalités principales
+
+- page d'accueil publique ;
+- identité visuelle Grain d'Espoir Essonne ;
+- citations dynamiques issues de l'API publique QuoVaGo ;
+- affichage des événements à venir dans la zone Agenda ;
+- accès aux sites Activités, Calendrier et Ressources ;
+- bouton **Participer aux prochains événements** redirigeant vers le calendrier ;
+- liens de contact et de soutien.
+
+### Architecture
+
+Le site reste volontairement simple et statique :
+
+```text
+index.html
+assets/
+├── css/
+└── js/
+```
+
+Les composants CSS et JavaScript sont séparés afin de faciliter la maintenance.
+
+### QuoVaGo
+
+Les citations sont obtenues depuis l'API publique QuoVaGo :
+
+```text
+https://api.quovago.com
+```
+
+Le site principal ne contient pas directement les codes de sondage des événements.
+
+La gestion des participations et des formulaires est déléguée au site Calendrier.
+
+### Sites associés
+
+```text
+https://activites.graindespoir.fr
+https://calendrier.graindespoir.fr
+https://ressources.graindespoir.fr
+```
+
+### Déploiement
+
+Le site est publié via GitHub Pages depuis la branche `main`.
+
+Toute évolution doit être développée et validée sur une branche dédiée avant fusion dans `main`.
