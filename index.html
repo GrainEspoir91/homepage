@@ -12,6 +12,10 @@
   rel="stylesheet"
   href="./assets/css/quotes.css"
 >
+  <link
+    rel="stylesheet"
+    href="./assets/css/agenda.css"
+  >
 </head>
 
 <body>
@@ -47,10 +51,6 @@
           </div>
         </div>
 
-        <a class="don-top" href="#qrcode">
-          ♥ Faire un don
-        </a>
-
       </div>
 
       <div class="header-navigation">
@@ -77,31 +77,76 @@
           </p>
 
           <div class="buttons">
-            <a class="btn btn-primary" href="https://activites.graindespoir.fr">☘ Nos activités</a>
-            <a class="btn btn-secondary" href="https://calendrier.graindespoir.fr">📅 Notre calendrier</a>
-            <a class="btn btn-secondary" href="#qrcode">🤲 Devenir bénévole</a>
+            <a
+              class="btn btn-primary"
+              href="https://calendrier.graindespoir.fr/?participate=next"
+            >
+              🤝 Participer aux prochains événements
+            </a>
           </div>
         </div>
 
-        <aside class="support-card" id="qrcode">
-          <div class="support-title">
-            <img src="logo.png" alt="" />
-            <span>Le Cri de l’Espoir</span>
+        <div class="agenda-wrapper">
+
+          <div
+            class="agenda-news"
+            aria-label="Actualité"
+          >
+            <span class="agenda-news-dot"></span>
+            <span class="agenda-news-label">NEWS</span>
+            <span class="agenda-news-text">
+              Événement à venir
+            </span>
           </div>
 
-          <div class="quote">Ensemble partageons<br>l’espoir et l’amour.</div>
+          <aside
+            class="agenda-card"
+            aria-label="Événements à venir"
+          >
 
-          <div class="qr-box">
-            <img src="qrcode-adhesion-cotisation-2025-2026.png" alt="QR code pour s'inscrire ou faire un don" />
+          <div class="agenda-heading">
+            <small>AGENDA</small>
+            <h2>Événements à venir</h2>
           </div>
 
-          <div class="scan-text">
-            <strong>Scannez le QR Code</strong>
-            pour vous inscrire ou faire un don
+          <button
+            id="agenda-previous"
+            class="agenda-control agenda-control--previous"
+            type="button"
+            aria-label="Événement précédent"
+          >
+            ‹
+          </button>
+
+          <div class="agenda-viewport">
+
+            <div
+              id="agenda-track"
+              class="agenda-track"
+            ></div>
+
+            <p
+              id="agenda-empty"
+              class="agenda-empty"
+              hidden
+            >
+              Aucun événement à venir.
+            </p>
+
           </div>
 
-          <a class="btn btn-primary" href="#qrcode">♥ Je fais un don</a>
-        </aside>
+          <button
+            id="agenda-next"
+            class="agenda-control agenda-control--next"
+            type="button"
+            aria-label="Événement suivant"
+          >
+            ›
+          </button>
+
+          </aside>
+
+        </div>
       </section>
 
       <section class="mission" id="mission">
@@ -163,6 +208,11 @@
   type="module"
   src="./assets/js/quotes.js"
 ></script>
+
+  <script
+    type="module"
+    src="./assets/js/agenda.js"
+  ></script>
 
 </body>
 
